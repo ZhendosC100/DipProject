@@ -9,7 +9,7 @@ import img_click from './parts/img_click';
 import modal_time from './parts/modal_time';
 import modal_popup from './parts/modal_popup';
 
-window.addEventListener(DOMContentLoaded, function(){
+window.addEventListener('DOMContentLoaded', function(){
     modal();
     forms_modal();
     calc();
