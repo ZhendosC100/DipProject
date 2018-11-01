@@ -609,12 +609,22 @@ textarea:focus {
   pading-top: 15px;
 }
 
-.sale .eTimer .timer_cont, span {
+.sale .eTimer .timer_cont {
   display: flex;
   justify-content: center;
 }
 
-.sale .eTimer .timer_cont span p{
+.sale .eTimer .timer_cont .days, .hours, .minutes, .seconds {
+  background: url(../img/timer/screenshot_54.png);
+  width: 66px;
+  height: 61px;
+  font-size: 3em;
+  color: #fff;
+  text-align: center;
+  padding-left: 4px;
+  letter-spacing: 0.2em;
+}
+/*.sale .eTimer .timer_cont span p{
   text-align: center;
   color: #fff;
   background-color: #454545;
@@ -623,7 +633,7 @@ textarea:focus {
   font-size: 3em;
   width: 32px;
   height: 61px;
-}
+}*/
 
 .sale .eTimer .timer_cont >div {
   margin: 10px;

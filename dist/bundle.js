@@ -296,31 +296,59 @@ function tabs_wind() {}
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return timer; });
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 function timer() {
-  var timer_area = document.querySelector('.timer'),
-      timer = document.querySelector('.eTimer');
+  var deadLine = '2018-11-07';
 
-  var Options = function Options(height, width, bg, fontSize, textAlign) {
-    _classCallCheck(this, Options);
-
-    this.height = height + 'px';
-    this.width = width + 'px';
-    this.bg = bg;
-    this.fontSize = fontSize + 'px';
-    this.textAlign = textAlign;
+  var getTimeRemaining = function getTimeRemaining(endtime) {
+    var t = Date.parse(endtime) - Date.parse(new Date()),
+        //.parse превращает любую дату в мс  и используем для остановки таймера как только t<=0 таймер останавливатеся 
+    seconds = Math.floor(t / 1000 % 60),
+        //Math.floor() для округления, (t/1000)%60 берем остаток секунд от минуты
+    minutes = Math.floor(t / 1000 / 60 % 60),
+        hours = Math.floor(t / (1000 * 60 * 60) % 24),
+        days = Math.floor(t / (1000 * 60 * 60 * 24));
+    return {
+      //вычленяем значения полностью времени, часов, минут, секунд в массив
+      'total': t,
+      'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+    };
   };
-}
-/*createDiv(){
-       let div = document.createElement('div');
-       document.body.appendChild(div);
-       div.innerHTML = text;
-       div.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.bg}; font-size: ${this.fontSize}; text-align: ${this.textAlign};`;
-   }
-}
 
-const ourDiv = new Options(100, 200, 'red', 34, 'center');*/
+  var setClock = function setClock(id
+  /*id элемента с которым будет работать*/
+  , endtime
+  /*переменная времени остановки*/
+  ) {
+    var timer = document.getElementById(id),
+        days = timer.querySelector('.days'),
+        hours = timer.querySelector('.hours'),
+        minutes = timer.querySelector('.minutes'),
+        seconds = timer.querySelector('.seconds');
+
+    var updateClock = function updateClock() {
+      var tm = getTimeRemaining(endtime);
+      document.querySelector('.days').innerHTML = "0".concat(tm.days).slice(-2);
+      document.querySelector('.hours').innerHTML = "0".concat(tm.hours).slice(-2);
+      document.querySelector('.minutes').innerHTML = "0".concat(tm.minutes).slice(-2);
+      document.querySelector('.seconds').innerHTML = "0".concat(tm.seconds).slice(-2); //остановка таймера
+
+      if (tm.total <= 0) {
+        clearInterval(timeInterval);
+        document.querySelector('.days').innerHTML = "00";
+        document.querySelector('.hours').innerHTML = "00";
+        document.querySelector('.minutes').innerHTML = "00";
+        document.querySelector('.seconds').innerHTML = "00";
+      }
+    };
+
+    var timeInterval = setInterval(updateClock, 1000);
+  };
+
+  setClock('timer', deadLine);
+}
 
 /***/ })
 
