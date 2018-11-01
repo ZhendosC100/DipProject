@@ -288,7 +288,31 @@ function tabs_wind() {}
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return timer; });
-function timer() {}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function timer() {
+  var timer_area = document.querySelector('.timer'),
+      timer = document.querySelector('.eTimer');
+
+  var Options = function Options(height, width, bg, fontSize, textAlign) {
+    _classCallCheck(this, Options);
+
+    this.height = height + 'px';
+    this.width = width + 'px';
+    this.bg = bg;
+    this.fontSize = fontSize + 'px';
+    this.textAlign = textAlign;
+  };
+}
+/*createDiv(){
+       let div = document.createElement('div');
+       document.body.appendChild(div);
+       div.innerHTML = text;
+       div.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.bg}; font-size: ${this.fontSize}; text-align: ${this.textAlign};`;
+   }
+}
+
+const ourDiv = new Options(100, 200, 'red', 34, 'center');*/
 
 /***/ })
 

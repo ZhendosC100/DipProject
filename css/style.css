@@ -587,8 +587,46 @@ textarea:focus {
   font-size: 2.4rem;
   line-height: 1.6;
 }
+
+.sale .timer {
+  background-color: #fff;
+  border: 2px solid #999696;
+  border-radius: 16px;
+  width: 80%;
+  height: 167px;
+}
+
 .sale .eTimer {
+  padding: 24px;
   text-align: center;
+}
+
+.sale .eTimer .head_text{
+  font-size: 1.3em
+}
+
+.sale .eTimer .timer_cont{
+  pading-top: 15px;
+}
+
+.sale .eTimer .timer_cont, span {
+  display: flex;
+  justify-content: center;
+}
+
+.sale .eTimer .timer_cont span p{
+  text-align: center;
+  color: #fff;
+  background-color: #454545;
+  border-radius: 7px;
+  margin: 1px;
+  font-size: 3em;
+  width: 32px;
+  height: 61px;
+}
+
+.sale .eTimer .timer_cont >div {
+  margin: 10px;
 }
 /*Contacts*/
 .contacts {
