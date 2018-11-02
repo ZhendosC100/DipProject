@@ -19,28 +19,36 @@ export default function timer() {
     };
 
     const setClock = (id /*id элемента с которым будет работать*/, endtime/*переменная времени остановки*/) => { 
-        let timer = document.getElementById(id),
-            days = timer.querySelector('.days'),
-            hours = timer.querySelector('.hours'),
-            minutes = timer.querySelector('.minutes'),
-            seconds = timer.querySelector('.seconds');
-            
+        let days = document.querySelector('.days'),
+            hours = document.querySelector('.hours'),
+            minutes = document.querySelector('.minutes'),
+            seconds = document.querySelector('.seconds');
+                
 
         const updateClock = () => {
         let tm = getTimeRemaining(endtime);
 
-            document.querySelector('.days').innerHTML = (`0${tm.days}`).slice(-2);
-            document.querySelector('.hours').innerHTML = (`0${tm.hours}`).slice(-2);
-            document.querySelector('.minutes').innerHTML = (`0${tm.minutes}`).slice(-2);
-            document.querySelector('.seconds').innerHTML = (`0${tm.seconds}`).slice(-2); 
+        /*function timerOn(n) {
+            n.innerHTML = (`0${tm.n}`).slice(-2);
+        }
+
+            timerOn(days);
+            timerOn(hours);
+            timerOn(minutes);
+            timerOn(seconds);*/
+
+            days.innerHTML = (`0${tm.days}`).slice(-2);
+            hours.innerHTML = (`0${tm.hours}`).slice(-2);
+            minutes.innerHTML = (`0${tm.minutes}`).slice(-2);
+            seconds.innerHTML = (`0${tm.seconds}`).slice(-2);
           //остановка таймера
           
           if (tm.total <= 0  ) {
               clearInterval(timeInterval);
-              document.querySelector('.days').innerHTML = "00";
-              document.querySelector('.hours').innerHTML = "00";
-              document.querySelector('.minutes').innerHTML = "00";
-              document.querySelector('.seconds').innerHTML = "00";
+              days.innerHTML = "00";
+              hours.innerHTML = "00";
+              minutes.innerHTML = "00";
+              seconds.innerHTML = "00";
           }
         };
         let timeInterval = setInterval(updateClock, 1000);
