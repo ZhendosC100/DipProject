@@ -11,6 +11,10 @@ export default function modal() {
                 mdl.style.display = 'block';
             }
 
+            if(target.classList.contains('phone_link')) {
+                mdl_time.style.display = 'block';
+            }
+
             if(target.classList.contains('popup_engineer')){ //modal
                 mdl.style.display = 'none';
             }
@@ -35,6 +39,7 @@ export default function modal() {
     };
 
     setTimeout(mdl_delay, 60000);
+
 
     btn_close_time.addEventListener('click', function(){
         mdl_time.style.display = 'none';
