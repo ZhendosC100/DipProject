@@ -41,15 +41,20 @@ export default function timer() {
             hours.innerHTML = (`0${tm.hours}`).slice(-2);
             minutes.innerHTML = (`0${tm.minutes}`).slice(-2);
             seconds.innerHTML = (`0${tm.seconds}`).slice(-2);
-            
+
           //остановка таймера
+
+          function timerOff(n) {
+            n.innerHTML = "00";
+        }
           
           if (tm.total <= 0  ) {
-              clearInterval(timeInterval);
-              days.innerHTML = "00";
-              hours.innerHTML = "00";
-              minutes.innerHTML = "00";
-              seconds.innerHTML = "00";
+                clearInterval(timeInterval);
+
+                timerOff(days);
+                timerOff(hours);
+                timerOff(minutes);
+                timerOff(seconds);
           }
         };
         let timeInterval = setInterval(updateClock, 1000);
