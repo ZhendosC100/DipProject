@@ -103,9 +103,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_tabs_finish__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parts/tabs_finish */ "./parts/tabs_finish.js");
 /* harmony import */ var _parts_timer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./parts/timer */ "./parts/timer.js");
 /* harmony import */ var _parts_img_click__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./parts/img_click */ "./parts/img_click.js");
-/* harmony import */ var _parts_modal_time__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./parts/modal_time */ "./parts/modal_time.js");
-/* harmony import */ var _parts_modal_popup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./parts/modal_popup */ "./parts/modal_popup.js");
-
+/* harmony import */ var _parts_modal_popup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./parts/modal_popup */ "./parts/modal_popup.js");
 
 
 
@@ -124,8 +122,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_tabs_finish__WEBPACK_IMPORTED_MODULE_5__["default"])();
   Object(_parts_timer__WEBPACK_IMPORTED_MODULE_6__["default"])();
   Object(_parts_img_click__WEBPACK_IMPORTED_MODULE_7__["default"])();
-  Object(_parts_modal_time__WEBPACK_IMPORTED_MODULE_8__["default"])();
-  Object(_parts_modal_popup__WEBPACK_IMPORTED_MODULE_9__["default"])();
+  Object(_parts_modal_popup__WEBPACK_IMPORTED_MODULE_8__["default"])();
 });
 
 /***/ }),
@@ -260,20 +257,6 @@ function modal() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return modal_popup; });
 function modal_popup() {}
-
-/***/ }),
-
-/***/ "./parts/modal_time.js":
-/*!*****************************!*\
-  !*** ./parts/modal_time.js ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return modal_time; });
-function modal_time() {}
 
 /***/ }),
 
