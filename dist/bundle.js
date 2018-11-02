@@ -137,7 +137,30 @@ window.addEventListener('DOMContentLoaded', function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return calc; });
-function calc() {}
+function calc() {
+  var calc = document.querySelector('.popup_calc'),
+      close_calc = calc.querySelector('.popup_calc_close'),
+      inp_width = document.getElementById('width'),
+      inp_height = document.getElementById('height'),
+      body_calc = document.querySelector('body');
+
+  function replace() {
+    this.value = this.value.replace(/[^\d]/ig, '');
+  }
+
+  inp_width.oninput = replace;
+  inp_height.oninput = replace;
+  body_calc.addEventListener('click', function (event) {
+    var target = event.target;
+
+    if (target.classList.contains('glazing_price_btn')) {
+      calc.style.display = 'block';
+    }
+  });
+  close_calc.addEventListener('click', function () {
+    calc.style.display = 'none';
+  });
+}
 
 /***/ }),
 
