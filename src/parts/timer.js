@@ -41,6 +41,7 @@ export default function timer() {
             hours.innerHTML = (`0${tm.hours}`).slice(-2);
             minutes.innerHTML = (`0${tm.minutes}`).slice(-2);
             seconds.innerHTML = (`0${tm.seconds}`).slice(-2);
+            
           //остановка таймера
           
           if (tm.total <= 0  ) {
