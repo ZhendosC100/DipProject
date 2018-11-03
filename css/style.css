@@ -753,6 +753,7 @@ textarea:focus {
   z-index: 9;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .popup_content,
 .popup_engineer_content,
 .popup_calc_end_content {
@@ -775,6 +776,11 @@ textarea:focus {
   border: none;
   background: transparent;
 }
+
+#type1, #type2, #type3, #type4 {
+  margin-left: 12%;
+}
+
 .popup_calc {
   display: none;
   position: fixed;
