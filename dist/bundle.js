@@ -139,6 +139,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return calc; });
 function calc() {
   var calc = document.querySelector('.popup_calc'),
+      calc_profile = document.querySelector('.popup_calc_button'),
       close_calc = calc.querySelector('.popup_calc_close'),
       inp_width = document.getElementById('width'),
       inp_height = document.getElementById('height'),
@@ -155,6 +156,11 @@ function calc() {
 
     if (target.classList.contains('glazing_price_btn')) {
       calc.style.display = 'block';
+    }
+
+    if (target.classList.contains('popup_calc_button')) {
+      calc.style.display = 'none';
+      calc_profile.style.display = 'block';
     }
   });
   close_calc.addEventListener('click', function () {
@@ -222,56 +228,45 @@ function modal() {
   //modal
   var body = document.querySelector('body'),
       mdl = document.querySelector('.popup_engineer'),
-      btn_close = mdl.querySelector('.popup_close');
+      // modal
+  mdl_time = document.querySelector('.popup'); //modal 60sek
+
   body.addEventListener('click', function (e) {
-    var target = e.target;
+    var target = e.target; //console.log(e.target);
 
     if (target.classList.contains('header_btn')) {
+      //modal
       mdl.style.display = 'block';
     }
 
     if (target.classList.contains('phone_link')) {
+      //modal 60sek at link
       mdl_time.style.display = 'block';
     }
 
     if (target.classList.contains('popup_engineer')) {
-      //modal
+      //modal close
       mdl.style.display = 'none';
     }
 
     if (target.classList.contains('popup')) {
-      //modal 60s
+      //modal 60s close
       mdl_time.style.display = 'none';
     }
-  });
-  btn_close.addEventListener('click', function () {
-    mdl.style.display = 'none';
-  }); //modal 60sek
 
-  var mdl_time = document.querySelector('.popup'),
-      btn_close_time = mdl_time.querySelector('.popup_close');
+    if (e.target.tagName == 'STRONG') {
+      mdl.style.display = 'none'; //modal close
+
+      mdl_time.style.display = 'none'; //modal 60sek close
+    }
+  }); //modal 60sek
 
   var mdl_delay = function mdl_delay() {
     mdl_time.style.display = 'block';
   };
 
   setTimeout(mdl_delay, 60000);
-  btn_close_time.addEventListener('click', function () {
-    mdl_time.style.display = 'none';
-  });
-} //btn_mdl = document.querySelector('.header_btn'),
-
-/* body.addEventListener('click', function(e){
-            let target = e.target;
-    
-            if(target.classList.contains('header_btn')){
-                mdl.style.display = 'block';
-            }
-    
-            if(target.classList.contains('fun_close')) {
-                mdl.style.display = 'none';
-            }
-        });*/
+}
 
 /***/ }),
 
