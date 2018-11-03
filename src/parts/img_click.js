@@ -1,6 +1,68 @@
 export default function img_click(){
     
-    //section_header_sub
-    //row
+    let body_img = document.querySelector('body'),
+        works = document.querySelector('.works'),
+        div = document.createElement('div'),
+        section_sub = works.querySelector('.section_header_sub'); 
+        div.classList.add('big_image');
+        works.appendChild(div);
+        console.log(div);        
+
+        body_img.addEventListener('click', function(e){
+            let target = e.target;
+            //console.log(e.target);
+
+            if(target.classList.contains('section_header_sub')){
+                section_sub.style.display = "none";
+                div.style.display = 'none';
+            }
+            
+            if(target.tagName == 'IMG'){
+                e.preventDefault();
+                section_sub.style.display = "block";
+                div.style.display = 'block';
+                //div.style.background = "url(img/our_works/big_img/1.png)";
+            }
+
+            if(target.classList.contains('a_img_one')){
+            
+                div.style.backgroundImage = "url(img/our_works/big_img/1.png)";
+            }
+
+            if(target.classList.contains('a_img_two')){
+            
+                div.style.background = "url(img/our_works/big_img/2.png)";
+            }
+
+            if(target.classList.contains('a_img_three')){
+            
+                div.style.background = "url(img/our_works/big_img/3.png)";
+            }
+
+            if(target.classList.contains('a_img_four')){
+            
+                div.style.background = "url(img/our_works/big_img/4.png)";
+            }
+
+            if(target.classList.contains('a_img_five')){
+            
+                div.style.background = "url(img/our_works/big_img/5.png)";
+            }
+
+            if(target.classList.contains('a_img_six')){
+            
+                div.style.background = "url(img/our_works/big_img/6.png)";
+            }
+
+            if(target.classList.contains('a_img_seven')){
+            
+                div.style.background = "url(img/our_works/big_img/7.png)";
+            }
+
+            if(target.classList.contains('a_img_eight')){
+            
+                div.style.background = "url(img/our_works/big_img/8.png)";
+            }
+        });
 
 }

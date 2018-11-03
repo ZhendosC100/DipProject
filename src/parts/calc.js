@@ -16,9 +16,6 @@ export default function calc(){
         body_calc = document.querySelector('body');
         calc_img_one.style.display = "block";
 
-        console.log(calc_end);
-        console.log(calc);
-
         function replace() {
             this.value = this.value.replace(/[^\d]/ig, '');
         }
