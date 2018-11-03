@@ -204,6 +204,7 @@ function calc() {
 
 
     if (target.classList.contains('type1_img')) {
+      event.preventDefault();
       calc_img_one.style.display = "block";
       calc_img_two.style.display = "none";
       calc_img_three.style.display = "none";
@@ -211,6 +212,7 @@ function calc() {
     }
 
     if (target.classList.contains('type2_img')) {
+      event.preventDefault();
       calc_img_one.style.display = "none";
       calc_img_two.style.display = "block";
       calc_img_three.style.display = "none";
@@ -218,6 +220,7 @@ function calc() {
     }
 
     if (target.classList.contains('type3_img')) {
+      event.preventDefault();
       calc_img_one.style.display = "none";
       calc_img_two.style.display = "none";
       calc_img_three.style.display = "block";
@@ -225,6 +228,7 @@ function calc() {
     }
 
     if (target.classList.contains('type4_img')) {
+      event.preventDefault();
       calc_img_one.style.display = "none";
       calc_img_two.style.display = "none";
       calc_img_three.style.display = "none";
