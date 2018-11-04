@@ -275,7 +275,10 @@ function forms_modal() {
   }); //modal
 
   var form_modal = document.getElementById('modal_form'),
-      input_modal = form_modal.getElementsByTagName('input'); //Прописываем запрос
+      input_modal = form_modal.getElementsByTagName('input');
+  input_modal[1].addEventListener('input', function () {
+    input_modal[1].value = input_modal[1].value.replace(/[^0-9+]/ig, ''); //делаем невозможным ввод других символов, кроме указанных
+  }); //Прописываем запрос
 
   function sendForm(elem) {
     elem.addEventListener('submit', function (event) {
