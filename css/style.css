@@ -523,17 +523,15 @@ textarea:focus {
 }
 
 .big_image {
-  border: 2px solid #000000;
+  /*border: 2px solid #000000;*/
   border-radius: 3px;
   display: none;
-  /*background: url(../img/our_works/big_img/1.png) no-repeat;*/
-  background-repeat: no-repeat;
-  background-size: 100%;
+ /*background: url(../img/our_works/big_img/3.png) no-repeat;*/
   position: fixed;
-  top: 50px;
-  left: 17%;
-  width: 65%;
-  height: 85%;
+  top: 100px;
+  left: 20%;
+  width: 55%;
+  height: 75%;
   z-index: 7;
 }
 

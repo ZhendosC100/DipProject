@@ -12,6 +12,7 @@ let form = document.getElementById('modal_form'),
     //Прописываем запрос
     function sendForm(elem) {
         elem.addEventListener('submit', function(event) {
+            console.log('2');
             event.preventDefault();
             elem.appendChild(statusMessage);
             

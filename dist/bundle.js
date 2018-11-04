@@ -271,6 +271,7 @@ function forms_modal() {
 
   function sendForm(elem) {
     elem.addEventListener('submit', function (event) {
+      console.log('2');
       event.preventDefault();
       elem.appendChild(statusMessage);
       var formData = new FormData(elem);
@@ -394,42 +395,42 @@ function img_click() {
 
     if (target.classList.contains('a_img_one')) {
       toBig();
-      div.style.backgroundImage = "url(img/our_works/big_img/1.png)";
+      div.style.backgroundImage = "url(img/our_works/big_img/1.png) no-repeat";
     }
 
     if (target.classList.contains('a_img_two')) {
       toBig();
-      div.style.background = "url(img/our_works/big_img/2.png)";
+      div.style.background = "url(img/our_works/big_img/2.png) no-repeat";
     }
 
     if (target.classList.contains('a_img_three')) {
       toBig();
-      div.style.background = "url(img/our_works/big_img/3.png)";
+      div.style.background = "url(img/our_works/big_img/3.png) no-repeat";
     }
 
     if (target.classList.contains('a_img_four')) {
       toBig();
-      div.style.background = "url(img/our_works/big_img/4.png)";
+      div.style.background = "url(img/our_works/big_img/4.png) no-repeat";
     }
 
     if (target.classList.contains('a_img_five')) {
       toBig();
-      div.style.background = "url(img/our_works/big_img/5.png)";
+      div.style.background = "url(img/our_works/big_img/5.png) no-repeat";
     }
 
     if (target.classList.contains('a_img_six')) {
       toBig();
-      div.style.background = "url(img/our_works/big_img/6.png)";
+      div.style.background = "url(img/our_works/big_img/6.png) no-repeat";
     }
 
     if (target.classList.contains('a_img_seven')) {
       toBig();
-      div.style.background = "url(img/our_works/big_img/7.png)";
+      div.style.background = "url(img/our_works/big_img/7.png) no-repeat";
     }
 
     if (target.classList.contains('a_img_eight')) {
       toBig();
-      div.style.background = "url(img/our_works/big_img/8.png)";
+      div.style.background = "url(img/our_works/big_img/8.png) no-repeat";
     }
   });
 }
