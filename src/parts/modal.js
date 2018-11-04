@@ -9,7 +9,7 @@ export default function modal() {
         body.addEventListener('click', function(e){
             let target = e.target;
 
-            //console.log(e.target);
+            console.log(e.target);
 
             if(target.classList.contains('header_btn')){ //modal
                 mdl.style.display = 'block';

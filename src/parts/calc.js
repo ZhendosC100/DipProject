@@ -61,35 +61,43 @@ export default function calc(){
             calc_end.style.display = 'none'; //calc_end close
         }
 
-            //prevju
-        if(target.classList.contains('type1_img')){
+
+        //prevju to close 3,4 and 1,2
+        const toClose_one = () => {
             event.preventDefault();
-            calc_img_one.style.display = "block";
-            calc_img_two.style.display = "none";
             calc_img_three.style.display = "none";
             calc_img_four.style.display = "none";
+        };
+
+        const toClose_two = () => {
+            event.preventDefault();
+            calc_img_one.style.display = "none";
+            calc_img_two.style.display = "none";
+        };
+
+
+
+            //prevju
+        if(target.classList.contains('type1_img')){
+            toClose_one();
+            calc_img_one.style.display = "block";
+            calc_img_two.style.display = "none";
         }
 
         if(target.classList.contains('type2_img')){
-            event.preventDefault();
+            toClose_one();
             calc_img_one.style.display = "none";
             calc_img_two.style.display = "block";
-            calc_img_three.style.display = "none";
-            calc_img_four.style.display = "none";
         }
 
         if(target.classList.contains('type3_img')){
-            event.preventDefault();
-            calc_img_one.style.display = "none";
-            calc_img_two.style.display = "none";
+            toClose_two();
             calc_img_three.style.display = "block";
             calc_img_four.style.display = "none";
         }
 
         if(target.classList.contains('type4_img')){
-            event.preventDefault();
-            calc_img_one.style.display = "none";
-            calc_img_two.style.display = "none";
+            toClose_two();
             calc_img_three.style.display = "none";
             calc_img_four.style.display = "block";
         }
@@ -97,7 +105,7 @@ export default function calc(){
 
 
 
-
+    //to check cold/warm
     check_cold.addEventListener('click', () => {
             check_warm.classList.toggle('checkbox-custom');
     });

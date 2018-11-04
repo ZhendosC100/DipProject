@@ -198,41 +198,47 @@ function calc() {
       calc_profile.style.display = 'none'; //calc_profile close
 
       calc_end.style.display = 'none'; //calc_end close
-    } //prevju
+    } //prevju to close 3,4 and 1,2
+
+
+    var toClose_one = function toClose_one() {
+      event.preventDefault();
+      calc_img_three.style.display = "none";
+      calc_img_four.style.display = "none";
+    };
+
+    var toClose_two = function toClose_two() {
+      event.preventDefault();
+      calc_img_one.style.display = "none";
+      calc_img_two.style.display = "none";
+    }; //prevju
 
 
     if (target.classList.contains('type1_img')) {
-      event.preventDefault();
+      toClose_one();
       calc_img_one.style.display = "block";
       calc_img_two.style.display = "none";
-      calc_img_three.style.display = "none";
-      calc_img_four.style.display = "none";
     }
 
     if (target.classList.contains('type2_img')) {
-      event.preventDefault();
+      toClose_one();
       calc_img_one.style.display = "none";
       calc_img_two.style.display = "block";
-      calc_img_three.style.display = "none";
-      calc_img_four.style.display = "none";
     }
 
     if (target.classList.contains('type3_img')) {
-      event.preventDefault();
-      calc_img_one.style.display = "none";
-      calc_img_two.style.display = "none";
+      toClose_two();
       calc_img_three.style.display = "block";
       calc_img_four.style.display = "none";
     }
 
     if (target.classList.contains('type4_img')) {
-      event.preventDefault();
-      calc_img_one.style.display = "none";
-      calc_img_two.style.display = "none";
+      toClose_two();
       calc_img_three.style.display = "none";
       calc_img_four.style.display = "block";
     }
-  });
+  }); //to check cold/warm
+
   check_cold.addEventListener('click', function () {
     check_warm.classList.toggle('checkbox-custom');
   });
@@ -253,7 +259,90 @@ function calc() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return forms_modal; });
-function forms_modal() {}
+function forms_modal() {
+  //modal
+  var form = document.getElementById('modal_form'),
+      input = form.getElementsByTagName('input'),
+      statusMessage = document.createElement('div'); //statusMessage.classList.add('status');
+
+  input[1].addEventListener('input', function () {
+    input[1].value = input[1].value.replace(/[^0-9+]/ig, ''); //делаем невозможным ввод других символов, кроме указанных
+  }); //Прописываем запрос
+
+  function sendForm(elem) {
+    elem.addEventListener('submit', function (event) {
+      event.preventDefault();
+      elem.appendChild(statusMessage);
+      var formData = new FormData(elem);
+      var obj = {}; //Вариант отправки через JSON
+
+      formData.forEach(function (value, key) {
+        //Вариант отправки через JSON
+        obj[key] = value; //Вариант отправки через JSON
+      });
+      var json = JSON.stringify(obj);
+
+      function postData(data) {
+        return new Promise(function (resolve, reject) {
+          var request = new XMLHttpRequest();
+          request.open('POST', 'server.json');
+          request.setRequestHeader('Content-type', 'application/json; charset=utf-8'); //Вариант отправки через JSON        
+
+          request.onreadystatechange = function () {
+            if (request.readyState < 4) {
+              resolve();
+            } else if (request.readyState === 4 && request.readyState == 200) {
+              resolve();
+            } else {
+              reject();
+            }
+          };
+
+          request.send(data);
+        });
+      } // end of function postData 
+
+
+      function clearInput() {
+        //обнуляем все input
+        for (var i = 0; i < input.length; i++) {
+          input[i].value = '';
+        }
+      }
+
+      postData(json).then(function () {
+        return statusMessage.innerHTML = message.loading;
+      }).then(function () {
+        return statusMessage.innerHTML = message.success;
+      }).catch(function () {
+        return statusMessage.innerHTML = message.failure;
+      }).then(clearInput);
+    });
+  }
+
+  sendForm(form);
+}
+/*form.addEventListener('submit', function(event) {
+        
+    event.preventDefault();
+    form.appendChild(statusMessage);
+
+    //создаем сам запрос чтобы отправить данные на сервер
+    let request = new XMLHttpRequest();
+    request.open('POST', 'server.json');
+
+    request.setRequestHeader ('Content-type', 'application/json; charset=utf-8');//Вариант отправки через JSON
+
+    let formData = new FormData(form);
+
+    let obj = {};                            //Вариант отправки через JSON
+    formData.forEach(function(value, key) {  //Вариант отправки через JSON
+        obj[key] = value;                   //Вариант отправки через JSON
+    });
+    let json = JSON.stringify(obj);         //Вариант отправки через JSON
+    request.send(json);                     //Вариант отправки через JSON
+
+});*/
 
 /***/ }),
 
@@ -365,7 +454,8 @@ function modal() {
   mdl_time = document.querySelector('.popup'); //modal 60sek
 
   body.addEventListener('click', function (e) {
-    var target = e.target; //console.log(e.target);
+    var target = e.target;
+    console.log(e.target);
 
     if (target.classList.contains('header_btn')) {
       //modal
