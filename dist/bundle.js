@@ -260,18 +260,25 @@ function calc() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return forms_modal; });
 function forms_modal() {
-  //modal
-  var form = document.getElementById('modal_form'),
-      input = form.getElementsByTagName('input'),
+  //modal_time_60sec
+  var message = {
+    loading: 'Загрузка...',
+    success: 'Спасибо! Скоро мы с Вами свяжемся',
+    failure: 'Что-то пошло не так...'
+  };
+  var form_time = document.getElementById('modal_form_time'),
+      input = form_time.getElementsByTagName('input'),
       statusMessage = document.createElement('div'); //statusMessage.classList.add('status');
 
   input[1].addEventListener('input', function () {
     input[1].value = input[1].value.replace(/[^0-9+]/ig, ''); //делаем невозможным ввод других символов, кроме указанных
-  }); //Прописываем запрос
+  }); //modal
+
+  var form_modal = document.getElementById('modal_form'),
+      input_modal = form_modal.getElementsByTagName('input'); //Прописываем запрос
 
   function sendForm(elem) {
     elem.addEventListener('submit', function (event) {
-      console.log('2');
       event.preventDefault();
       elem.appendChild(statusMessage);
       var formData = new FormData(elem);
@@ -309,6 +316,10 @@ function forms_modal() {
         for (var i = 0; i < input.length; i++) {
           input[i].value = '';
         }
+
+        for (var _i = 0; _i < input_modal.length; _i++) {
+          input_modal[_i].value = '';
+        }
       }
 
       postData(json).then(function () {
@@ -321,7 +332,8 @@ function forms_modal() {
     });
   }
 
-  sendForm(form);
+  sendForm(form_time);
+  sendForm(form_modal);
 }
 /*form.addEventListener('submit', function(event) {
         

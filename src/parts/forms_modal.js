@@ -1,18 +1,30 @@
 export default function forms_modal(){
-    //modal
-let form = document.getElementById('modal_form'),
-    input = form.getElementsByTagName('input'),
-    statusMessage = document.createElement('div');
+    //modal_time_60sec
+    let message = {
+        loading: 'Загрузка...',
+        success: 'Спасибо! Скоро мы с Вами свяжемся',
+        failure: 'Что-то пошло не так...'
+    };
+
+    let form_time = document.getElementById('modal_form_time'),
+        input = form_time.getElementsByTagName('input'),
+        statusMessage = document.createElement('div');
 
     //statusMessage.classList.add('status');
     input[1].addEventListener('input', () => {
         input[1].value = input[1].value.replace(/[^0-9+]/ig, ''); //делаем невозможным ввод других символов, кроме указанных
     });
 
+
+    //modal
+
+    let form_modal = document.getElementById('modal_form'),
+        input_modal = form_modal.getElementsByTagName('input');
+
+
     //Прописываем запрос
     function sendForm(elem) {
         elem.addEventListener('submit', function(event) {
-            console.log('2');
             event.preventDefault();
             elem.appendChild(statusMessage);
             
@@ -52,8 +64,12 @@ let form = document.getElementById('modal_form'),
             for(let i = 0; i < input.length; i++){
                 input[i].value = '';
             }
+
+            for(let i = 0; i < input_modal.length; i++){
+                input_modal[i].value = '';
+            }
         }
-    
+            
         postData(json)
                 .then(() => statusMessage.innerHTML = message.loading)
                 .then(() => statusMessage.innerHTML = message.success)
@@ -62,7 +78,8 @@ let form = document.getElementById('modal_form'),
             
         });
     }
-    sendForm(form);
+    sendForm(form_time);
+    sendForm(form_modal);
  
 }
 
