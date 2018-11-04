@@ -260,25 +260,52 @@ function calc() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return forms_modal; });
 function forms_modal() {
-  //modal_time_60sec
   var message = {
     loading: 'Загрузка...',
     success: 'Спасибо! Скоро мы с Вами свяжемся',
     failure: 'Что-то пошло не так...'
   };
+
+  function inp_form(m) {
+    m[1].addEventListener('input', function () {
+      m[1].value = m[1].value.replace(/[^0-9+]/ig, ''); //делаем невозможным ввод других символов, кроме указанных
+    });
+  } //modal_time_60sec
+
+
   var form_time = document.getElementById('modal_form_time'),
       input = form_time.getElementsByTagName('input'),
-      statusMessage = document.createElement('div'); //statusMessage.classList.add('status');
-
-  input[1].addEventListener('input', function () {
-    input[1].value = input[1].value.replace(/[^0-9+]/ig, ''); //делаем невозможным ввод других символов, кроме указанных
-  }); //modal
+      statusMessage = document.createElement('div');
+  inp_form(input); //modal
 
   var form_modal = document.getElementById('modal_form'),
       input_modal = form_modal.getElementsByTagName('input');
-  input_modal[1].addEventListener('input', function () {
-    input_modal[1].value = input_modal[1].value.replace(/[^0-9+]/ig, ''); //делаем невозможным ввод других символов, кроме указанных
-  }); //Прописываем запрос
+  inp_form(input_modal); // только цифры
+  //form one 
+
+  var form_one = document.getElementById('form_one'),
+      input_one = form_one.getElementsByTagName('input');
+  inp_form(input_one); //form two
+
+  var form_two = document.getElementById('form_two'),
+      input_two = form_two.getElementsByTagName('input');
+  inp_form(input_two); //form three
+
+  var form_three = document.getElementById('form_three'),
+      input_three = form_three.getElementsByTagName('input');
+  inp_form(input_three); //form four
+
+  var form_four = document.getElementById('form_four'),
+      input_four = form_four.getElementsByTagName('input');
+  inp_form(input_four); //form five
+
+  var form_five = document.getElementById('form_five'),
+      input_five = form_five.getElementsByTagName('input');
+  inp_form(input_five); //form six
+
+  var form_six = document.getElementById('form_six'),
+      input_six = form_six.getElementsByTagName('input');
+  inp_form(input_six); //Прописываем запрос
 
   function sendForm(elem) {
     elem.addEventListener('submit', function (event) {
@@ -314,15 +341,33 @@ function forms_modal() {
       } // end of function postData 
 
 
+      function clrToAllInput(k) {
+        for (var i = 0; i < k.length; i++) {
+          k[i].value = '';
+        }
+      }
+
       function clearInput() {
         //обнуляем все input
-        for (var i = 0; i < input.length; i++) {
-          input[i].value = '';
-        }
 
-        for (var _i = 0; _i < input_modal.length; _i++) {
-          input_modal[_i].value = '';
-        }
+        /*for(let i = 0; i < input.length; i++){
+            input[i].value = '';
+        }*/
+        clrToAllInput(input); //form_modal_60sec
+
+        clrToAllInput(input_modal); //modal
+
+        clrToAllInput(input_one); //form_one
+
+        clrToAllInput(input_two); //form_two
+
+        clrToAllInput(input_three); //form_three
+
+        clrToAllInput(input_four); //form_four
+
+        clrToAllInput(input_five); //form five
+
+        clrToAllInput(input_six); //form six
       }
 
       postData(json).then(function () {
@@ -335,8 +380,21 @@ function forms_modal() {
     });
   }
 
-  sendForm(form_time);
-  sendForm(form_modal);
+  sendForm(form_time); //modal_time_60sec
+
+  sendForm(form_modal); //modal
+
+  sendForm(form_one); //form one
+
+  sendForm(form_two); //form two
+
+  sendForm(form_three); //form three
+
+  sendForm(form_four); //form four
+
+  sendForm(form_five); //form five
+
+  sendForm(form_six); //form six
 }
 /*form.addEventListener('submit', function(event) {
         
