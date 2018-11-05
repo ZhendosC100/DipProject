@@ -16,6 +16,7 @@ export default function img_click(){
             
                 section_sub.style.display = "none";
                 div.style.display = 'none';
+                div.style.backgroundImage = "none";
             }
            
 
@@ -27,7 +28,7 @@ export default function img_click(){
 
             if(target.classList.contains('a_img_one')){
                 toBig();
-                div.style.backgroundImage = "url(img/our_works/big_img/1.png) no-repeat";
+                div.style.background = "url(img/our_works/big_img/1.png) no-repeat";
             }
 
             if(target.classList.contains('a_img_two')){
