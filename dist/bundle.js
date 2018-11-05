@@ -103,8 +103,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_tabs_finish__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parts/tabs_finish */ "./parts/tabs_finish.js");
 /* harmony import */ var _parts_timer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./parts/timer */ "./parts/timer.js");
 /* harmony import */ var _parts_img_click__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./parts/img_click */ "./parts/img_click.js");
-/* harmony import */ var _parts_modal_popup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./parts/modal_popup */ "./parts/modal_popup.js");
-
 
 
 
@@ -122,7 +120,6 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_tabs_finish__WEBPACK_IMPORTED_MODULE_5__["default"])();
   Object(_parts_timer__WEBPACK_IMPORTED_MODULE_6__["default"])();
   Object(_parts_img_click__WEBPACK_IMPORTED_MODULE_7__["default"])();
-  Object(_parts_modal_popup__WEBPACK_IMPORTED_MODULE_8__["default"])();
 });
 
 /***/ }),
@@ -690,20 +687,6 @@ function modal() {
 
 /***/ }),
 
-/***/ "./parts/modal_popup.js":
-/*!******************************!*\
-  !*** ./parts/modal_popup.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return modal_popup; });
-function modal_popup() {}
-
-/***/ }),
-
 /***/ "./parts/tabs_finish.js":
 /*!******************************!*\
   !*** ./parts/tabs_finish.js ***!
@@ -858,7 +841,126 @@ if (target && target.classList.contains('info-header-tab')) { //делегиро
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return tabs_wind; });
-function tabs_wind() {}
+function tabs_wind() {
+  var glazing_slider = document.querySelector('.glazing_slider'),
+      tree_link = glazing_slider.querySelector('.tree_link'),
+      aluminum_link = glazing_slider.querySelector('.aluminum_link'),
+      plastic_link = glazing_slider.querySelector('.plastic_link'),
+      french_link = glazing_slider.querySelector('.french_link'),
+      rise_link = glazing_slider.querySelector('.rise_link'),
+      tree = document.querySelector('.tree'),
+      aluminum = document.querySelector('.aluminum'),
+      plastic = document.querySelector('.plastic'),
+      french = document.querySelector('.french'),
+      rise = document.querySelector('.rise'); //Activating tabs 
+
+  var tabActive = function tabActive(a) {
+    a.classList.add('active');
+  }; //Deactivating tabs
+
+
+  var tabDeactive = function tabDeactive(d) {
+    d.classList.remove('active');
+  }; //Displaing content
+
+
+  var contDisplay = function contDisplay(e) {
+    e.style.display = 'block';
+  }; //Hiding content
+
+
+  var contDisplayNone = function contDisplayNone(n) {
+    n.style.display = 'none';
+  };
+
+  glazing_slider.addEventListener('click', function (e) {
+    var target = e.target; //tree active
+
+    if (target.classList.contains('tree_link')) {
+      //link active/deactive
+      tabActive(tree_link);
+      tabDeactive(aluminum_link);
+      tabDeactive(plastic_link);
+      tabDeactive(french_link);
+      tabDeactive(rise_link); //end
+      //content display/none
+
+      contDisplay(tree);
+      contDisplayNone(aluminum);
+      contDisplayNone(plastic);
+      contDisplayNone(french);
+      contDisplayNone(rise); //end
+    } //aluminum active
+
+
+    if (target.classList.contains('aluminum_link')) {
+      //link active/deactive
+      tabActive(aluminum_link);
+      tabDeactive(tree_link);
+      tabDeactive(plastic_link);
+      tabDeactive(french_link);
+      tabDeactive(rise_link); //end
+      //content display/none
+
+      contDisplay(aluminum);
+      contDisplayNone(tree);
+      contDisplayNone(plastic);
+      contDisplayNone(french);
+      contDisplayNone(rise); //end
+    } //plastic active
+
+
+    if (target.classList.contains('plastic_link')) {
+      //link active/deactive
+      tabActive(plastic_link);
+      tabDeactive(tree_link);
+      tabDeactive(aluminum_link);
+      tabDeactive(french_link);
+      tabDeactive(rise_link); //end
+      //content display/none
+
+      contDisplay(plastic);
+      contDisplayNone(tree);
+      contDisplayNone(aluminum);
+      contDisplayNone(french);
+      contDisplayNone(rise); //end
+    } //french active
+
+
+    if (target.classList.contains('french_link')) {
+      //link active/deactive
+      tabActive(french_link);
+      tabDeactive(tree_link);
+      tabDeactive(aluminum_link);
+      tabDeactive(plastic_link);
+      tabDeactive(rise_link); //end
+      //content display/none
+
+      contDisplay(french);
+      contDisplayNone(tree);
+      contDisplayNone(aluminum);
+      contDisplayNone(plastic);
+      contDisplayNone(rise); //end
+    } //rise active
+
+
+    if (target.classList.contains('rise_link')) {
+      //link active/deactive
+      tabActive(rise_link);
+      tabDeactive(tree_link);
+      tabDeactive(aluminum_link);
+      tabDeactive(plastic_link);
+      tabDeactive(french_link); //end
+      //content display/none
+
+      contDisplay(rise);
+      contDisplayNone(tree);
+      contDisplayNone(aluminum);
+      contDisplayNone(plastic);
+      contDisplayNone(french); //end
+    }
+  });
+}
 
 /***/ }),
 
