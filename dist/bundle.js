@@ -98,12 +98,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./parts/modal */ "./parts/modal.js");
 /* harmony import */ var _parts_forms_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parts/forms_modal */ "./parts/forms_modal.js");
 /* harmony import */ var _parts_calc__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./parts/calc */ "./parts/calc.js");
-/* harmony import */ var _parts_forms_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/forms_page */ "./parts/forms_page.js");
-/* harmony import */ var _parts_tabs_wind__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parts/tabs_wind */ "./parts/tabs_wind.js");
-/* harmony import */ var _parts_tabs_finish__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parts/tabs_finish */ "./parts/tabs_finish.js");
-/* harmony import */ var _parts_timer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./parts/timer */ "./parts/timer.js");
-/* harmony import */ var _parts_img_click__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./parts/img_click */ "./parts/img_click.js");
-
+/* harmony import */ var _parts_tabs_wind__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/tabs_wind */ "./parts/tabs_wind.js");
+/* harmony import */ var _parts_tabs_finish__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parts/tabs_finish */ "./parts/tabs_finish.js");
+/* harmony import */ var _parts_timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parts/timer */ "./parts/timer.js");
+/* harmony import */ var _parts_img_click__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./parts/img_click */ "./parts/img_click.js");
 
 
 
@@ -115,11 +113,10 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_modal__WEBPACK_IMPORTED_MODULE_0__["default"])();
   Object(_parts_forms_modal__WEBPACK_IMPORTED_MODULE_1__["default"])();
   Object(_parts_calc__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  Object(_parts_forms_page__WEBPACK_IMPORTED_MODULE_3__["default"])();
-  Object(_parts_tabs_wind__WEBPACK_IMPORTED_MODULE_4__["default"])();
-  Object(_parts_tabs_finish__WEBPACK_IMPORTED_MODULE_5__["default"])();
-  Object(_parts_timer__WEBPACK_IMPORTED_MODULE_6__["default"])();
-  Object(_parts_img_click__WEBPACK_IMPORTED_MODULE_7__["default"])();
+  Object(_parts_tabs_wind__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  Object(_parts_tabs_finish__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  Object(_parts_timer__WEBPACK_IMPORTED_MODULE_5__["default"])();
+  Object(_parts_img_click__WEBPACK_IMPORTED_MODULE_6__["default"])();
 });
 
 /***/ }),
@@ -536,20 +533,6 @@ function forms_modal() {
     request.send(json);                     //Вариант отправки через JSON
 
 });*/
-
-/***/ }),
-
-/***/ "./parts/forms_page.js":
-/*!*****************************!*\
-  !*** ./parts/forms_page.js ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return forms_page; });
-function forms_page() {}
 
 /***/ }),
 
