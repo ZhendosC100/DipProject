@@ -741,7 +741,7 @@ function tabs_finish() {
   };
 
   var displayNone = function displayNone(d) {
-    c.style.display = 'none';
+    d.style.display = 'none';
   };
 
   body_tabs.addEventListener('click', function (event) {
