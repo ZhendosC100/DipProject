@@ -35,8 +35,13 @@ export default function calc(){
 
         if(target.classList.contains('popup_calc_button')){
             event.preventDefault();
-            calc.style.display = 'none';          //calc close
-            calc_profile.style.display = 'block'; //calc_profile open
+           if(inp_width.value !="" && inp_height.value != "") 
+                {
+                    calc.style.display = 'none';                      //calc close
+                    calc_profile.style.display = 'block';             //calc_profile open
+                } else {
+                    alert('Введите все данные');
+                }           
             //check_cold.style.background = 'url(../img/modal_calc/check.png)';
         }
 
@@ -104,14 +109,143 @@ export default function calc(){
     });
 
 
+//select profil
+    let selectElem = document.getElementById('view_type'),
+        sel_profil;
 
-    //to check cold/warm
+        selectElem.addEventListener('change', (event) => {
+             //let value = e.target.value;
+            let currency = currentCurrency(event.target.children);
+                sel_profil = `${currency}`;
+  });
+
+  function currentCurrency(elements) {
+    for(let i = 0; i < elements.length; i++) {
+      if(elements[i].selected) return elements[i].innerHTML;
+    }
+  }
+
+ 
+
+//to check cold/warm
+    let cold_item,
+        warm_item;
+
+    
     check_cold.addEventListener('click', () => {
             check_warm.classList.toggle('checkbox-custom');
+            if(check_warm.classList.toggle('checkbox-custom' == true)){
+                cold_item = 'Холодное';
+                console.log(cold_item);
+            }else {
+                cold_item ="-";
+            }
     });
+    console.log(cold_item);
+
 
     check_warm.addEventListener('click', () => {
             check_cold.classList.toggle('checkbox-custom');
+            if(check_cold.classList.toggle('checkbox-custom' == true)){
+                warm_item = 'Теплое';
+                console.log(warm_item);
+            }else {
+                warm_item ="-";
+            }
     });
+    //form of calculator
+
+    let message = {
+        loading: 'Загрузка...',
+        success: 'Спасибо! Скоро мы с Вами свяжемся',
+        failure: 'Что-то пошло не так...'
+    };
+
+    function inp_calc(m) {
+        m[1].addEventListener('input', () => {
+            m[1].value = m[1].value.replace(/[^0-9+]/ig, ''); //делаем невозможным ввод других символов, кроме указанных
+        });
+    }
+
+    let form_calc = document.getElementById('form_calc'),
+        calc_input = form_calc.getElementsByTagName('input'),
+        statusMessage = document.createElement('div');
+
+        inp_calc(calc_input);
+
+
+     //Прописываем запрос
+     function sendForm(elem) {
+        elem.addEventListener('submit', function(event) {
+            event.preventDefault();
+            elem.appendChild(statusMessage);
+            
+            let formData = new FormData(elem);
+    
+            let obj = {};                            //Вариант отправки через JSON
+            formData.forEach(function(value, key) {  //Вариант отправки через JSON
+                obj[key] = value;                   //Вариант отправки через JSON
+            });
+
+            obj["width"] = inp_width.value;
+            obj["height"]= inp_height.value;
+            obj["Type 1"] = cold_item;
+            obj["Type 2"] = warm_item;
+            obj["Тип профиля"] = sel_profil;
+
+            let json = JSON.stringify(obj);
+    
+        function postData(data){
+    
+            return new Promise(function (resolve,reject){
+                let request = new XMLHttpRequest();
+                    request.open('POST', 'server.json');
+                    request.setRequestHeader ('Content-type', 'application/json; charset=utf-8');//Вариант отправки через JSON        
+    
+                    
+                request.onreadystatechange = function(){
+                    if(request.readyState < 4) {
+                        resolve();
+                    } else if(request.readyState === 4 && request.readyState ==200){
+                            resolve();
+                    } else{
+                           reject();
+                     
+                    }
+                };                   
+    
+                    request.send(data);
+            });
+               
+            } // end of function postData 
+
+            function clrToAllInput(k) {
+                for(let i = 0; i < k.length; i++){
+                    k[i].value = '';
+                }
+            }
+            
+        function clearInput(){              //обнуляем все input
+            /*for(let i = 0; i < input.length; i++){
+                input[i].value = '';
+            }*/
+
+            clrToAllInput(calc_input);       //form calc
+            inp_width.value = '';
+            inp_height.value = '';
+
+           
+        
+        }
+            
+        postData(json)
+                .then(() => statusMessage.innerHTML = message.loading)
+                .then(() => statusMessage.innerHTML = message.success)
+                .catch(() => statusMessage.innerHTML = message.failure)
+                .then(clearInput);
+            
+        });
+    }
+    sendForm(form_calc);   //modal_time_60sec
     
 }
