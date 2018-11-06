@@ -601,13 +601,13 @@ function img_click() {
       div.style.background = "url(img/our_works/big_img/6.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_seven' || false)) {
+    if (target.classList.contains('a_img_seven') || target.classList.contains('lupa_seven')) {
       e.preventDefault();
       toBig();
       div.style.background = "url(img/our_works/big_img/7.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_eight' || false)) {
+    if (target.classList.contains('a_img_eight') || target.classList.contains('lupa_eight')) {
       e.preventDefault();
       toBig();
       div.style.background = "url(img/our_works/big_img/8.png) no-repeat";
