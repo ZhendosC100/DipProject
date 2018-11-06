@@ -1,7 +1,6 @@
 export default function tabs_finish() {
     let body_tabs = document.querySelector('body'),
         slider_dec = document.querySelector('.decoration_slider'),
-        //tabs_dec = slider_dec.querySelectorAll('.decoration_item'),
         internal_link = slider_dec.querySelector('.internal_link'),
         external_link = slider_dec.querySelector('.external_link'),
         rising_link = slider_dec.querySelector('.rising_link'),
@@ -11,7 +10,7 @@ export default function tabs_finish() {
         external = dec_content.querySelector('.external'),
         rising = dec_content.querySelector('.rising'),
         roof = dec_content.querySelector('.roof');
-        
+
     const toActive = (a) => {
         a.classList.add('after_click');
     };
@@ -28,9 +27,9 @@ export default function tabs_finish() {
         d.style.display = 'none';
     };
 
-    body_tabs.addEventListener('click', function(event){
+    body_tabs.addEventListener('click', function (event) {
         let target = event.target;
-        if (target.classList.contains('internal_lnk')){
+        if (target.classList.contains('internal_lnk')) {
             //event.preventDefault();
             //activited/deactived tabs 
             toActive(internal_link);
@@ -47,10 +46,10 @@ export default function tabs_finish() {
             displayNone(rising);
             displayNone(roof);
             //end
-            
+
         }
 
-        if (target.classList.contains('external_lnk')){
+        if (target.classList.contains('external_lnk')) {
             //event.preventDefault();
             //activited/deactived tabs
             toActive(external_link);
@@ -70,7 +69,7 @@ export default function tabs_finish() {
 
         }
 
-        if (target.classList.contains('rising_lnk')){
+        if (target.classList.contains('rising_lnk')) {
             //event.preventDefault();
 
             //activited/deactived tabs
@@ -88,10 +87,10 @@ export default function tabs_finish() {
             displayNone(external);
             displayNone(roof);
             //end
-            
+
         }
 
-        if (target.classList.contains('roof_lnk')){
+        if (target.classList.contains('roof_lnk')) {
             //event.preventDefault();
 
             //activited/deactived tabs

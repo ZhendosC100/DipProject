@@ -381,61 +381,45 @@ function forms_modal() {
 
   var form_time = document.getElementById('modal_form_time'),
       input = form_time.getElementsByTagName('input'),
-      statusMessage = document.createElement('div'),
-      notice_time = notice_forms[7];
+      statusMessage = document.createElement('div'); //notice_time = notice_forms[7];
+
   inp_form(input); //modal
 
   var form_modal = document.getElementById('modal_form'),
-      input_modal = form_modal.getElementsByTagName('input'),
-      notice_modal = notice_forms[6];
+      input_modal = form_modal.getElementsByTagName('input'); //notice_modal = notice_forms[6];
+
   inp_form(input_modal); // только цифры
   //form one 
 
   var form_one = document.getElementById('form_one'),
-      input_one = form_one.getElementsByTagName('input'),
-      notice_f_one = notice_forms[0];
+      input_one = form_one.getElementsByTagName('input'); //notice_f_one = notice_forms[0];
+
   inp_form(input_one); //form two
 
   var form_two = document.getElementById('form_two'),
-      input_two = form_two.getElementsByTagName('input'),
-      notice_f_two = notice_forms[1];
+      input_two = form_two.getElementsByTagName('input'); //notice_f_two = notice_forms[1];
+
   inp_form(input_two); //form three
 
   var form_three = document.getElementById('form_three'),
-      input_three = form_three.getElementsByTagName('input'),
-      notice_f_three = notice_forms[2];
+      input_three = form_three.getElementsByTagName('input'); //notice_f_three = notice_forms[2];
+
   inp_form(input_three); //form four
 
   var form_four = document.getElementById('form_four'),
-      input_four = form_four.getElementsByTagName('input'),
-      notice_f_four = notice_forms[3];
+      input_four = form_four.getElementsByTagName('input'); //notice_f_four = notice_forms[3];
+
   inp_form(input_four); //form five
 
   var form_five = document.getElementById('form_five'),
-      input_five = form_five.getElementsByTagName('input'),
-      notice_f_five = notice_forms[4];
+      input_five = form_five.getElementsByTagName('input'); //notice_f_five = notice_forms[4];
+
   inp_form(input_five); //form six
 
   var form_six = document.getElementById('form_six'),
       input_six = form_six.getElementsByTagName('input'),
       notice_f_six = notice_forms[5];
-  inp_form(input_six);
-  /*  function sendMessage(m){
-        m.innerHTML = message.loading;
-        m.innerHTML = message.success;
-        m.innerHTML = message.failure;
-    }*/
-
-  /* function toMessageLoad(l){
-       l.innerHTML = message.loading;     
-   }
-     function toMessageSucces(s){
-       s.innerHTML = message.success;
-   }
-     function toMessageFailure(f){
-       m.innerHTML = message.failure;
-   }*/
-  //Прописываем запрос
+  inp_form(input_six); //Прописываем запрос
 
   function sendForm(elem) {
     elem.addEventListener('submit', function (event) {
@@ -479,10 +463,6 @@ function forms_modal() {
 
       function clearInput() {
         //обнуляем все input
-
-        /*for(let i = 0; i < input.length; i++){
-            input[i].value = '';
-        }*/
         clrToAllInput(input); //form_modal_60sec
 
         clrToAllInput(input_modal); //modal
@@ -547,32 +527,27 @@ function img_click() {
       lupa = works.querySelectorAll('.lupa');
   div.classList.add('big_image');
   works.appendChild(div);
-  works.addEventListener('mouseout', function (e) {
+  works.addEventListener('mouseover', function (e) {
+    //lupa display
     var target = e.target;
-
-    if (target.classList.contains('lupa')) {
-      var delayOff = function delayOff() {
-        for (var i = 0; i < lupa.length; i++) {
-          lupa[i].classList.remove('lupa_on');
-        }
-      };
-
-      setTimeout(delayOff, 2000);
-    }
+    e.preventDefault();
 
     if (target.classList.contains('img')) {
-      for (var i = 0; i < lupa.length; i++) {
-        lupa[i].classList.remove('lupa_on');
-      }
+      target.previousElementSibling.style.display = 'block';
     }
   });
+
+  var hideLupa = function hideLupa() {
+    for (var i = 0; i < lupa.length; i++) {
+      lupa[i].style.display = 'none';
+    }
+  };
+
   works.addEventListener('mouseover', function (e) {
     var target = e.target;
 
-    if (target.classList.contains('img')) {
-      for (var i = 0; i < lupa.length; i++) {
-        lupa[i].classList.add('lupa_on');
-      }
+    if (target.classList.contains('col-lg-3') || target.classList.contains('container')) {
+      hideLupa();
     }
   });
   body_img.addEventListener('click', function (e) {
@@ -582,50 +557,58 @@ function img_click() {
       section_sub.style.display = "none";
       div.style.display = 'none';
       div.style.backgroundImage = "none";
+      hideLupa();
     }
 
     var toBig = function toBig() {
-      e.preventDefault();
       section_sub.style.display = "block";
       div.style.display = 'block';
     };
 
-    if (target.classList.contains('a_img_one') || target.classList.contains('lupa')) {
+    if (target.classList.contains('a_img_one') || target.classList.contains('lupa_one')) {
+      e.preventDefault();
       toBig();
       div.style.background = "url(img/our_works/big_img/1.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_two') || target.classList.contains('lupa')) {
+    if (target.classList.contains('a_img_two') || target.classList.contains('lupa_two')) {
+      e.preventDefault();
       toBig();
       div.style.background = "url(img/our_works/big_img/2.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_three') || target.classList.contains('lupa')) {
+    if (target.classList.contains('a_img_three') || target.classList.contains('lupa_three')) {
+      e.preventDefault();
       toBig();
       div.style.background = "url(img/our_works/big_img/3.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_four' || false)) {
+    if (target.classList.contains('a_img_four') || target.classList.contains('lupa_four')) {
+      e.preventDefault();
       toBig();
       div.style.background = "url(img/our_works/big_img/4.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_five' || false)) {
+    if (target.classList.contains('a_img_five') || target.classList.contains('lupa_five')) {
+      e.preventDefault();
       toBig();
       div.style.background = "url(img/our_works/big_img/5.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_six') || target.classList.contains('lupa')) {
+    if (target.classList.contains('a_img_six') || target.classList.contains('lupa_six')) {
+      e.preventDefault();
       toBig();
       div.style.background = "url(img/our_works/big_img/6.png) no-repeat";
     }
 
     if (target.classList.contains('a_img_seven' || false)) {
+      e.preventDefault();
       toBig();
       div.style.background = "url(img/our_works/big_img/7.png) no-repeat";
     }
 
     if (target.classList.contains('a_img_eight' || false)) {
+      e.preventDefault();
       toBig();
       div.style.background = "url(img/our_works/big_img/8.png) no-repeat";
     }
@@ -703,8 +686,7 @@ __webpack_require__.r(__webpack_exports__);
 function tabs_finish() {
   var body_tabs = document.querySelector('body'),
       slider_dec = document.querySelector('.decoration_slider'),
-      //tabs_dec = slider_dec.querySelectorAll('.decoration_item'),
-  internal_link = slider_dec.querySelector('.internal_link'),
+      internal_link = slider_dec.querySelector('.internal_link'),
       external_link = slider_dec.querySelector('.external_link'),
       rising_link = slider_dec.querySelector('.rising_link'),
       roof_link = slider_dec.querySelector('.roof_link'),
@@ -973,14 +955,6 @@ function timer() {
 
     var updateClock = function updateClock() {
       var tm = getTimeRemaining(endtime);
-      /*function timerOn(n) {
-          n.innerHTML = (`0${tm.n}`).slice(-2);
-      }
-            timerOn(days);
-          timerOn(hours);
-          timerOn(minutes);
-          timerOn(seconds);*/
-
       days.innerHTML = "0".concat(tm.days).slice(-2);
       hours.innerHTML = "0".concat(tm.hours).slice(-2);
       minutes.innerHTML = "0".concat(tm.minutes).slice(-2);
