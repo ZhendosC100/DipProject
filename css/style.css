@@ -542,7 +542,7 @@ textarea:focus {
   z-index: 8;
 }*/
 
-.works a[data-fancybox="gallery"] .lupa {
+/*.works a[data-fancybox="gallery"] .lupa {
   position: absolute;
   top: 0;
   left: 0;
@@ -553,9 +553,22 @@ textarea:focus {
   opacity: 0;
   -webkit-transition: ease 0.2s;
   transition: ease 0.2s;
-}
+}*/
 .works a[data-fancybox="gallery"]:hover .lupa {
   opacity: 1;
+}
+
+.lupa_on{
+  position: absolute;
+  top: 0;
+  left: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 40%;
+  opacity: 1;
+  -webkit-transition: ease 0.2s;
+  transition: ease 0.2s;
 }
 /*Guarantees*/
 .guarantees {

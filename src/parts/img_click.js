@@ -3,9 +3,31 @@ export default function img_click(){
     let body_img = document.querySelector('body'),
         works = document.querySelector('.works'),
         div = document.createElement('div'),
-        section_sub = works.querySelector('.section_header_sub'); 
+        section_sub = works.querySelector('.section_header_sub'),
+        lupa = works.querySelectorAll('.lupa'); 
         div.classList.add('big_image');
-        works.appendChild(div);     
+        works.appendChild(div);   
+        
+        works.addEventListener('mouseout', function(e) {
+            let target = e.target;
+            
+            if(target.classList.contains('img')){
+                for(let i = 0; i < lupa.length; i++){
+                    lupa[i].classList.remove('lupa_on');
+                }
+            }
+        });
+        
+        works.addEventListener('mouseover', function(e){
+            let target = e.target;
+            
+            if(target.classList.contains('img')){
+                for(let i = 0; i < lupa.length; i++){
+                    lupa[i].classList.add('lupa_on');
+                }
+            } 
+        });
+
 
         body_img.addEventListener('click', function(e){
             let target = e.target;
