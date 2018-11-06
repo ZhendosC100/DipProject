@@ -10,11 +10,25 @@ export default function img_click(){
         
         works.addEventListener('mouseout', function(e) {
             let target = e.target;
+
+            if(target.classList.contains('lupa')){
+                
+                const delayOff = () => {
+                    for(let i = 0; i < lupa.length; i++){
+                        lupa[i].classList.remove('lupa_on');
+                    }
+                }; 
+                setTimeout(delayOff, 2000);
+            }
             
             if(target.classList.contains('img')){
-                for(let i = 0; i < lupa.length; i++){
-                    lupa[i].classList.remove('lupa_on');
-                }
+                
+                
+                    for(let i = 0; i < lupa.length; i++){
+                        lupa[i].classList.remove('lupa_on');
+                    }
+                
+                
             }
         });
         
@@ -46,42 +60,42 @@ export default function img_click(){
                 div.style.display = 'block';
             };
 
-            if(target.classList.contains('a_img_one')){
+            if(target.classList.contains('a_img_one') || target.classList.contains('lupa')){
                 toBig();
                 div.style.background = "url(img/our_works/big_img/1.png) no-repeat";
             }
 
-            if(target.classList.contains('a_img_two')){
+            if(target.classList.contains('a_img_two') || target.classList.contains('lupa')){
                 toBig();   
                 div.style.background = "url(img/our_works/big_img/2.png) no-repeat";
             }
 
-            if(target.classList.contains('a_img_three')){
+            if(target.classList.contains('a_img_three') || target.classList.contains('lupa')){
                 toBig();
                 div.style.background = "url(img/our_works/big_img/3.png) no-repeat";
             }
 
-            if(target.classList.contains('a_img_four')){
+            if(target.classList.contains('a_img_four' || target.classList.contains('lupa'))){
                 toBig();
                 div.style.background = "url(img/our_works/big_img/4.png) no-repeat";
             }
 
-            if(target.classList.contains('a_img_five')){
+            if(target.classList.contains('a_img_five' || target.classList.contains('lupa'))){
                 toBig();
                 div.style.background = "url(img/our_works/big_img/5.png) no-repeat";
             }
 
-            if(target.classList.contains('a_img_six')){
+            if(target.classList.contains('a_img_six') || target.classList.contains('lupa')){
                 toBig();
                 div.style.background = "url(img/our_works/big_img/6.png) no-repeat";
             }
 
-            if(target.classList.contains('a_img_seven')){
+            if(target.classList.contains('a_img_seven' || target.classList.contains('lupa'))){
                 toBig();
                 div.style.background = "url(img/our_works/big_img/7.png) no-repeat";
             }
 
-            if(target.classList.contains('a_img_eight')){
+            if(target.classList.contains('a_img_eight' || target.classList.contains('lupa'))){
                 toBig();
                 div.style.background = "url(img/our_works/big_img/8.png) no-repeat";
             }

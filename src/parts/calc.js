@@ -34,13 +34,14 @@ export default function calc(){
 
         if(target.classList.contains('popup_calc_button')){
             event.preventDefault();
-           if(inp_width.value !="" && inp_height.value != "") 
+           if(inp_width.value !="" && inp_height.value != "" && inp_width.value != "0" && inp_height.value != "0") 
                 {
-                    calc.style.display = 'none';                      //calc close
-                    calc_profile.style.display = 'block';             //calc_profile open
+                    calc.style.display = 'none';                      
+                    calc_profile.style.display = 'block';             
                 } else {
-                    alert('Введите все данные');
-                }           
+                    alert('Введите корректные данные!');
+                } 
+                          
         }
 
         if(target.classList.contains('popup_calc_profile_button')){

@@ -163,12 +163,11 @@ function calc() {
     if (target.classList.contains('popup_calc_button')) {
       event.preventDefault();
 
-      if (inp_width.value != "" && inp_height.value != "") {
-        calc.style.display = 'none'; //calc close
-
-        calc_profile.style.display = 'block'; //calc_profile open
+      if (inp_width.value != "" && inp_height.value != "" && inp_width.value != "0" && inp_height.value != "0") {
+        calc.style.display = 'none';
+        calc_profile.style.display = 'block';
       } else {
-        alert('Введите все данные');
+        alert('Введите корректные данные!');
       }
     }
 
@@ -551,6 +550,16 @@ function img_click() {
   works.addEventListener('mouseout', function (e) {
     var target = e.target;
 
+    if (target.classList.contains('lupa')) {
+      var delayOff = function delayOff() {
+        for (var i = 0; i < lupa.length; i++) {
+          lupa[i].classList.remove('lupa_on');
+        }
+      };
+
+      setTimeout(delayOff, 2000);
+    }
+
     if (target.classList.contains('img')) {
       for (var i = 0; i < lupa.length; i++) {
         lupa[i].classList.remove('lupa_on');
@@ -581,42 +590,42 @@ function img_click() {
       div.style.display = 'block';
     };
 
-    if (target.classList.contains('a_img_one')) {
+    if (target.classList.contains('a_img_one') || target.classList.contains('lupa')) {
       toBig();
       div.style.background = "url(img/our_works/big_img/1.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_two')) {
+    if (target.classList.contains('a_img_two') || target.classList.contains('lupa')) {
       toBig();
       div.style.background = "url(img/our_works/big_img/2.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_three')) {
+    if (target.classList.contains('a_img_three') || target.classList.contains('lupa')) {
       toBig();
       div.style.background = "url(img/our_works/big_img/3.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_four')) {
+    if (target.classList.contains('a_img_four' || false)) {
       toBig();
       div.style.background = "url(img/our_works/big_img/4.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_five')) {
+    if (target.classList.contains('a_img_five' || false)) {
       toBig();
       div.style.background = "url(img/our_works/big_img/5.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_six')) {
+    if (target.classList.contains('a_img_six') || target.classList.contains('lupa')) {
       toBig();
       div.style.background = "url(img/our_works/big_img/6.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_seven')) {
+    if (target.classList.contains('a_img_seven' || false)) {
       toBig();
       div.style.background = "url(img/our_works/big_img/7.png) no-repeat";
     }
 
-    if (target.classList.contains('a_img_eight')) {
+    if (target.classList.contains('a_img_eight' || false)) {
       toBig();
       div.style.background = "url(img/our_works/big_img/8.png) no-repeat";
     }
@@ -785,43 +794,6 @@ function tabs_finish() {
     }
   });
 }
-/*let tab = document.querySelectorAll('.info-header-tab'),
-info = document.querySelector('.info-header'),
-tabContent = document.querySelectorAll('.info-tabcontent');
-
-//функция скрывающая табы
-const hideTabContent = (a) => {
-for (let i = a; i < tabContent.length; i++) {
-    tabContent[i].classList.remove('show');
-    tabContent[i].classList.add('hide');
-}
-};
-hideTabContent(1);
-
-//функция показывающая tabContent
-const showTabContent = (b) => {
-for (let i = b; i < tabContent.length; i++) {
-    if (tabContent[b].classList.contains('hide')) {
-        tabContent[b].classList.remove('hide');
-        tabContent[b].classList.add('show');
-    }
-
-}
-};
-
-//назначение обработчика событий при клике на каждый из табов
-info.addEventListener('click', (event) => {
-let target = event.target; //делегирование события
-if (target && target.classList.contains('info-header-tab')) { //делегирование события
-    for (let i = 0; i < tab.length; i++) {
-        if (target == tab[i]) {
-            hideTabContent(0);
-            showTabContent(i);
-            break;
-        }
-    }
-}
-});*/
 
 /***/ }),
 

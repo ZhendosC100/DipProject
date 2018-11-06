@@ -554,9 +554,9 @@ textarea:focus {
   -webkit-transition: ease 0.2s;
   transition: ease 0.2s;
 }*/
-.works a[data-fancybox="gallery"]:hover .lupa {
+/*.works a[data-fancybox="gallery"]:hover .lupa {
   opacity: 1;
-}
+}*/
 
 .lupa_on{
   position: absolute;
