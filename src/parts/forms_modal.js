@@ -12,10 +12,12 @@ export default function forms_modal(){
         });
     }
 
+    let notice_forms = document.querySelectorAll('.form_notice');
      //modal_time_60sec
     let form_time = document.getElementById('modal_form_time'),
         input = form_time.getElementsByTagName('input'),
-        statusMessage = document.createElement('div');
+        statusMessage = document.createElement('div'),
+        notice_time = notice_forms[7];
 
         inp_form(input);
     
@@ -23,53 +25,79 @@ export default function forms_modal(){
     //modal
 
     let form_modal = document.getElementById('modal_form'),
-        input_modal = form_modal.getElementsByTagName('input');
+        input_modal = form_modal.getElementsByTagName('input'),
+        notice_modal = notice_forms[6];
 
         inp_form(input_modal);// только цифры
        
 
     //form one 
     let form_one = document.getElementById('form_one'),
-        input_one = form_one.getElementsByTagName('input');
+        input_one = form_one.getElementsByTagName('input'),
+        notice_f_one = notice_forms[0];
 
         inp_form(input_one);
 
     //form two
     let form_two = document.getElementById('form_two'),
-        input_two = form_two.getElementsByTagName('input');
+        input_two = form_two.getElementsByTagName('input'),
+        notice_f_two = notice_forms[1];
 
         inp_form(input_two);
 
     //form three
     let form_three = document.getElementById('form_three'),
-        input_three = form_three.getElementsByTagName('input');
+        input_three = form_three.getElementsByTagName('input'),
+        notice_f_three = notice_forms[2];
 
         inp_form(input_three);
 
     //form four
     let form_four = document.getElementById('form_four'),
-        input_four = form_four.getElementsByTagName('input');
+        input_four = form_four.getElementsByTagName('input'),
+        notice_f_four = notice_forms[3];
 
         inp_form(input_four);
 
     //form five
     let form_five = document.getElementById('form_five'),
-        input_five = form_five.getElementsByTagName('input');
+        input_five = form_five.getElementsByTagName('input'),
+        notice_f_five = notice_forms[4];
 
         inp_form(input_five);
 
     //form six
     let form_six = document.getElementById('form_six'),
-        input_six = form_six.getElementsByTagName('input');
+        input_six = form_six.getElementsByTagName('input'),
+        notice_f_six = notice_forms[5];
 
         inp_form(input_six);
 
+      /*  function sendMessage(m){
+            m.innerHTML = message.loading;
+            m.innerHTML = message.success;
+            m.innerHTML = message.failure;
+        }*/
+
+        
+
+       /* function toMessageLoad(l){
+            l.innerHTML = message.loading;     
+        }
+
+        function toMessageSucces(s){
+            s.innerHTML = message.success;
+        }
+
+        function toMessageFailure(f){
+            m.innerHTML = message.failure;
+        }*/
     //Прописываем запрос
     function sendForm(elem) {
         elem.addEventListener('submit', function(event) {
             event.preventDefault();
             elem.appendChild(statusMessage);
-            
+
             let formData = new FormData(elem);
     
             let obj = {};                            //Вариант отправки через JSON
@@ -124,7 +152,7 @@ export default function forms_modal(){
         
         }
             
-        postData(json)
+            postData(json)
                 .then(() => statusMessage.innerHTML = message.loading)
                 .then(() => statusMessage.innerHTML = message.success)
                 .catch(() => statusMessage.innerHTML = message.failure)
@@ -144,29 +172,6 @@ export default function forms_modal(){
  
 }
 
-
-
-/*form.addEventListener('submit', function(event) {
-        
-    event.preventDefault();
-    form.appendChild(statusMessage);
-
-    //создаем сам запрос чтобы отправить данные на сервер
-    let request = new XMLHttpRequest();
-    request.open('POST', 'server.json');
-
-    request.setRequestHeader ('Content-type', 'application/json; charset=utf-8');//Вариант отправки через JSON
-
-    let formData = new FormData(form);
-
-    let obj = {};                            //Вариант отправки через JSON
-    formData.forEach(function(value, key) {  //Вариант отправки через JSON
-        obj[key] = value;                   //Вариант отправки через JSON
-    });
-    let json = JSON.stringify(obj);         //Вариант отправки через JSON
-    request.send(json);                     //Вариант отправки через JSON
-
-});*/
 
 
 

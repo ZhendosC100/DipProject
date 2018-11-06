@@ -141,11 +141,10 @@ function calc() {
       calc_img_two = document.getElementById('type2'),
       calc_img_three = document.getElementById('type3'),
       calc_img_four = document.getElementById('type4'),
-      //farm/cold cacl_profile
-  check_cold = document.getElementById('cold'),
+      check_cold = document.getElementById('cold'),
       check_warm = document.getElementById('warm'),
-      //end farm/cold cacl_profile
-  body_calc = document.querySelector('body');
+      body_calc = document.querySelector('body'),
+      notice_calc = document.querySelectorAll('.form_notice')[8];
   calc_img_one.style.display = "block";
 
   function replace() {
@@ -155,9 +154,7 @@ function calc() {
   inp_width.oninput = replace;
   inp_height.oninput = replace;
   body_calc.addEventListener('click', function (event) {
-    //event.preventDefault();
     var target = event.target;
-    console.log(event.target);
 
     if (target.classList.contains('glazing_price_btn')) {
       calc.style.display = 'block'; //calc open
@@ -172,8 +169,7 @@ function calc() {
         calc_profile.style.display = 'block'; //calc_profile open
       } else {
         alert('Введите все данные');
-      } //check_cold.style.background = 'url(../img/modal_calc/check.png)';
-
+      }
     }
 
     if (target.classList.contains('popup_calc_profile_button')) {
@@ -197,6 +193,8 @@ function calc() {
       calc_profile.style.display = 'none'; //calc_profile close
 
       calc_end.style.display = 'none'; //calc_end close
+
+      notice_calc.innerHTML = "Перезвоним в течение 10 минут";
     } //prevju to close 3,4 and 1,2
 
 
@@ -241,7 +239,6 @@ function calc() {
   var selectElem = document.getElementById('view_type'),
       sel_profil;
   selectElem.addEventListener('change', function (event) {
-    //let value = e.target.value;
     var currency = currentCurrency(event.target.children);
     sel_profil = "".concat(currency);
   });
@@ -259,18 +256,15 @@ function calc() {
 
     if (check_warm.classList.toggle('checkbox-custom' == true)) {
       cold_item = 'Холодное';
-      console.log(cold_item);
     } else {
       cold_item = "-";
     }
   });
-  console.log(cold_item);
   check_warm.addEventListener('click', function () {
     check_cold.classList.toggle('checkbox-custom');
 
     if (check_cold.classList.toggle('checkbox-custom' == true)) {
       warm_item = 'Теплое';
-      console.log(warm_item);
     } else {
       warm_item = "-";
     }
@@ -340,10 +334,6 @@ function calc() {
 
       function clearInput() {
         //обнуляем все input
-
-        /*for(let i = 0; i < input.length; i++){
-            input[i].value = '';
-        }*/
         clrToAllInput(calc_input); //form calc
 
         inp_width.value = '';
@@ -351,11 +341,11 @@ function calc() {
       }
 
       postData(json).then(function () {
-        return statusMessage.innerHTML = message.loading;
+        return notice_calc.innerHTML = message.loading;
       }).then(function () {
-        return statusMessage.innerHTML = message.success;
+        return notice_calc.innerHTML = message.success;
       }).catch(function () {
-        return statusMessage.innerHTML = message.failure;
+        return notice_calc.innerHTML = message.failure;
       }).then(clearInput);
     });
   }
@@ -386,42 +376,67 @@ function forms_modal() {
     m[1].addEventListener('input', function () {
       m[1].value = m[1].value.replace(/[^0-9+]/ig, ''); //делаем невозможным ввод других символов, кроме указанных
     });
-  } //modal_time_60sec
+  }
 
+  var notice_forms = document.querySelectorAll('.form_notice'); //modal_time_60sec
 
   var form_time = document.getElementById('modal_form_time'),
       input = form_time.getElementsByTagName('input'),
-      statusMessage = document.createElement('div');
+      statusMessage = document.createElement('div'),
+      notice_time = notice_forms[7];
   inp_form(input); //modal
 
   var form_modal = document.getElementById('modal_form'),
-      input_modal = form_modal.getElementsByTagName('input');
+      input_modal = form_modal.getElementsByTagName('input'),
+      notice_modal = notice_forms[6];
   inp_form(input_modal); // только цифры
   //form one 
 
   var form_one = document.getElementById('form_one'),
-      input_one = form_one.getElementsByTagName('input');
+      input_one = form_one.getElementsByTagName('input'),
+      notice_f_one = notice_forms[0];
   inp_form(input_one); //form two
 
   var form_two = document.getElementById('form_two'),
-      input_two = form_two.getElementsByTagName('input');
+      input_two = form_two.getElementsByTagName('input'),
+      notice_f_two = notice_forms[1];
   inp_form(input_two); //form three
 
   var form_three = document.getElementById('form_three'),
-      input_three = form_three.getElementsByTagName('input');
+      input_three = form_three.getElementsByTagName('input'),
+      notice_f_three = notice_forms[2];
   inp_form(input_three); //form four
 
   var form_four = document.getElementById('form_four'),
-      input_four = form_four.getElementsByTagName('input');
+      input_four = form_four.getElementsByTagName('input'),
+      notice_f_four = notice_forms[3];
   inp_form(input_four); //form five
 
   var form_five = document.getElementById('form_five'),
-      input_five = form_five.getElementsByTagName('input');
+      input_five = form_five.getElementsByTagName('input'),
+      notice_f_five = notice_forms[4];
   inp_form(input_five); //form six
 
   var form_six = document.getElementById('form_six'),
-      input_six = form_six.getElementsByTagName('input');
-  inp_form(input_six); //Прописываем запрос
+      input_six = form_six.getElementsByTagName('input'),
+      notice_f_six = notice_forms[5];
+  inp_form(input_six);
+  /*  function sendMessage(m){
+        m.innerHTML = message.loading;
+        m.innerHTML = message.success;
+        m.innerHTML = message.failure;
+    }*/
+
+  /* function toMessageLoad(l){
+       l.innerHTML = message.loading;     
+   }
+     function toMessageSucces(s){
+       s.innerHTML = message.success;
+   }
+     function toMessageFailure(f){
+       m.innerHTML = message.failure;
+   }*/
+  //Прописываем запрос
 
   function sendForm(elem) {
     elem.addEventListener('submit', function (event) {
@@ -512,27 +527,6 @@ function forms_modal() {
 
   sendForm(form_six); //form six
 }
-/*form.addEventListener('submit', function(event) {
-        
-    event.preventDefault();
-    form.appendChild(statusMessage);
-
-    //создаем сам запрос чтобы отправить данные на сервер
-    let request = new XMLHttpRequest();
-    request.open('POST', 'server.json');
-
-    request.setRequestHeader ('Content-type', 'application/json; charset=utf-8');//Вариант отправки через JSON
-
-    let formData = new FormData(form);
-
-    let obj = {};                            //Вариант отправки через JSON
-    formData.forEach(function(value, key) {  //Вариант отправки через JSON
-        obj[key] = value;                   //Вариант отправки через JSON
-    });
-    let json = JSON.stringify(obj);         //Вариант отправки через JSON
-    request.send(json);                     //Вариант отправки через JSON
-
-});*/
 
 /***/ }),
 
@@ -553,9 +547,8 @@ function img_click() {
       section_sub = works.querySelector('.section_header_sub');
   div.classList.add('big_image');
   works.appendChild(div);
-  console.log(div);
   body_img.addEventListener('click', function (e) {
-    var target = e.target; //console.log(e.target);
+    var target = e.target;
 
     if (target.classList.contains('section_header_sub')) {
       section_sub.style.display = "none";
@@ -632,7 +625,6 @@ function modal() {
 
   body.addEventListener('click', function (e) {
     var target = e.target;
-    console.log(e.target);
 
     if (target.classList.contains('header_btn')) {
       //modal

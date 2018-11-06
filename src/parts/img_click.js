@@ -5,12 +5,10 @@ export default function img_click(){
         div = document.createElement('div'),
         section_sub = works.querySelector('.section_header_sub'); 
         div.classList.add('big_image');
-        works.appendChild(div);
-        console.log(div);        
+        works.appendChild(div);     
 
         body_img.addEventListener('click', function(e){
             let target = e.target;
-            //console.log(e.target);
 
             if(target.classList.contains('section_header_sub')){
             

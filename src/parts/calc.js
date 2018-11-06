@@ -9,12 +9,13 @@ export default function calc(){
         calc_img_two = document.getElementById('type2'),
         calc_img_three = document.getElementById('type3'),
         calc_img_four = document.getElementById('type4'),
-        //farm/cold cacl_profile
         check_cold = document.getElementById('cold'),
         check_warm = document.getElementById('warm'),
-        //end farm/cold cacl_profile
-        body_calc = document.querySelector('body');
+        body_calc = document.querySelector('body'),
+        notice_calc = document.querySelectorAll('.form_notice')[8];
+
         calc_img_one.style.display = "block";
+        
 
         function replace() {
             this.value = this.value.replace(/[^\d]/ig, '');
@@ -24,13 +25,11 @@ export default function calc(){
             inp_height.oninput = replace;
 
     body_calc.addEventListener('click', function(event){
-        //event.preventDefault();
         let target = event.target;
 
-        console.log(event.target);
 
         if(target.classList.contains('glazing_price_btn')){
-            calc.style.display = 'block';          //calc open
+            calc.style.display = 'block';                           //calc open
         }
 
         if(target.classList.contains('popup_calc_button')){
@@ -42,7 +41,6 @@ export default function calc(){
                 } else {
                     alert('Введите все данные');
                 }           
-            //check_cold.style.background = 'url(../img/modal_calc/check.png)';
         }
 
         if(target.classList.contains('popup_calc_profile_button')){
@@ -64,6 +62,7 @@ export default function calc(){
             calc.style.display = 'none';         //calc close
             calc_profile.style.display = 'none'; //calc_profile close
             calc_end.style.display = 'none'; //calc_end close
+            notice_calc.innerHTML = "Перезвоним в течение 10 минут";
         }
 
 
@@ -79,8 +78,6 @@ export default function calc(){
             calc_img_one.style.display = "none";
             calc_img_two.style.display = "none";
         };
-
-
 
             //prevju
         if(target.classList.contains('type1_img')){
@@ -114,7 +111,6 @@ export default function calc(){
         sel_profil;
 
         selectElem.addEventListener('change', (event) => {
-             //let value = e.target.value;
             let currency = currentCurrency(event.target.children);
                 sel_profil = `${currency}`;
   });
@@ -136,19 +132,16 @@ export default function calc(){
             check_warm.classList.toggle('checkbox-custom');
             if(check_warm.classList.toggle('checkbox-custom' == true)){
                 cold_item = 'Холодное';
-                console.log(cold_item);
             }else {
                 cold_item ="-";
             }
     });
-    console.log(cold_item);
 
 
     check_warm.addEventListener('click', () => {
             check_cold.classList.toggle('checkbox-custom');
             if(check_cold.classList.toggle('checkbox-custom' == true)){
                 warm_item = 'Теплое';
-                console.log(warm_item);
             }else {
                 warm_item ="-";
             }
@@ -223,12 +216,10 @@ export default function calc(){
                 for(let i = 0; i < k.length; i++){
                     k[i].value = '';
                 }
+
             }
             
         function clearInput(){              //обнуляем все input
-            /*for(let i = 0; i < input.length; i++){
-                input[i].value = '';
-            }*/
 
             clrToAllInput(calc_input);       //form calc
             inp_width.value = '';
@@ -239,9 +230,9 @@ export default function calc(){
         }
             
         postData(json)
-                .then(() => statusMessage.innerHTML = message.loading)
-                .then(() => statusMessage.innerHTML = message.success)
-                .catch(() => statusMessage.innerHTML = message.failure)
+                .then(() => notice_calc.innerHTML = message.loading)
+                .then(() => notice_calc.innerHTML = message.success)
+                .catch(() => notice_calc.innerHTML = message.failure)
                 .then(clearInput);
             
         });
