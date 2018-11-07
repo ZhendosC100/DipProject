@@ -553,7 +553,7 @@ function img_click() {
   body_img.addEventListener('click', function (e) {
     var target = e.target;
 
-    if (target.classList.contains('section_header_sub')) {
+    if (target.classList.contains('big_image')) {
       section_sub.style.display = "none";
       div.style.display = 'none';
       div.style.backgroundImage = "none";
@@ -639,11 +639,13 @@ function modal() {
 
     if (target.classList.contains('header_btn')) {
       //modal
+      e.preventDefault();
       mdl.style.display = 'block';
     }
 
     if (target.classList.contains('phone_link')) {
       //modal 60sek at link
+      e.preventDefault();
       mdl_time.style.display = 'block';
     }
 

@@ -529,11 +529,16 @@ textarea:focus {
   display: none;
  /*background: url(../img/our_works/big_img/3.png) no-repeat;*/
   position: fixed;
-  top: 100px;
-  left: 25%;
-  width: 55%;
+  top: 90px;
+  left: 28%;
+  width: 540px;
   height: 75%;
   z-index: 7;
+}
+
+.big_image:hover{
+  cursor: pointer;
+  border-radius: 13px;
 }
 
 /*.works .row{

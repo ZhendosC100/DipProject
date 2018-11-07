@@ -10,10 +10,12 @@ export default function modal() {
         let target = e.target;
 
         if (target.classList.contains('header_btn')) { //modal
+            e.preventDefault();
             mdl.style.display = 'block';
         }
 
         if (target.classList.contains('phone_link')) { //modal 60sek at link
+            e.preventDefault();
             mdl_time.style.display = 'block';
         }
 
