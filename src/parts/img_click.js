@@ -38,7 +38,7 @@ export default function img_click() {
     body_img.addEventListener('click', function (e) {
         let target = e.target;
 
-        if (target.classList.contains('big_image')) {
+        if (target.classList.contains('big_image') || target.classList.contains('section_header_sub')) {
 
             section_sub.style.display = "none";
             div.style.display = 'none';
